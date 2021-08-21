@@ -5,7 +5,5 @@
 #include <vector>
 #include <string>
 #include <cmath>
-struct  point {
-    int x=0,y=0;
-};
+double b, a;
 #endif //AUTHENTICATION_PROTOCOL_HEADER_HPP
