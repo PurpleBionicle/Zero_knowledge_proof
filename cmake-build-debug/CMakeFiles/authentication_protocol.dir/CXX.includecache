@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/ndp20/CLionProjects/authentication-protocol__/header.hpp
+iostream
+-
+
+C:/Users/ndp20/CLionProjects/authentication-protocol__/main.cpp
+header.hpp
+C:/Users/ndp20/CLionProjects/authentication-protocol__/header.hpp
+

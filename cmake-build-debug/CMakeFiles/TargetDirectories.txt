@@ -1,0 +1,3 @@
+C:/Users/ndp20/CLionProjects/authentication-protocol__/cmake-build-debug/CMakeFiles/authentication_protocol.dir
+C:/Users/ndp20/CLionProjects/authentication-protocol__/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ndp20/CLionProjects/authentication-protocol__/cmake-build-debug/CMakeFiles/rebuild_cache.dir
