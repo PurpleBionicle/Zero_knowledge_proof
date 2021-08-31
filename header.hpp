@@ -5,8 +5,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
-//elliptical curve y^2=x^3+ax+b
-double b, a; // коэффициенты
-int64_t p = 1, q = 1;
-int64_t x,y;
+#include "point.hpp"
+#include "curve.hpp"
+#include "client.hpp"
+#include "server.hpp"
+double  a;// коэффициент кривой
 #endif //AUTHENTICATION_PROTOCOL_HEADER_HPP

@@ -5,7 +5,6 @@
 #ifndef AUTHENTICATION_PROTOCOL_POINT_HPP
 #define AUTHENTICATION_PROTOCOL_POINT_HPP
 #include "header.hpp"
-
 int two_notation(int num) {
     //перевод из 10сс в 2сс
     // необходимо для минимизации числа итераций суммирования

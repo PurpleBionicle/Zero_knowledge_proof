@@ -4,6 +4,6 @@ project(authentication_protocol)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(protocol main.cpp header.hpp point.hpp test.cpp)
+add_executable(protocol main.cpp header.hpp point.hpp  curve.hpp server.hpp client.hpp)
 add_subdirectory(third-party/gtest)
-#add_executable(Google_Tests_run test.cpp)
+add_executable(Google_Tests_run test.cpp)
