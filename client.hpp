@@ -3,6 +3,7 @@
 #ifndef AUTHENTICATION_PROTOCOL_CLIENT_HPP
 #define AUTHENTICATION_PROTOCOL_CLIENT_HPP
 #include "header.hpp"
+#include "point.hpp"
 std::vector<point> client_gives_initial_points(Curve &curve, int &m) {
     //Абонент A выбирает случайные числа xi , 1≤xi≤ q−2
 

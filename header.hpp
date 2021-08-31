@@ -5,9 +5,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
-#include "point.hpp"
 #include "curve.hpp"
 #include "client.hpp"
 #include "server.hpp"
-double  a;// коэффициент кривой
+double  a=2;// коэффициент кривой
+int p;
 #endif //AUTHENTICATION_PROTOCOL_HEADER_HPP
