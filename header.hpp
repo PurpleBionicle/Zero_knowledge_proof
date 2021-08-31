@@ -5,5 +5,8 @@
 #include <vector>
 #include <string>
 #include <cmath>
-double b, a;
+//elliptical curve y^2=x^3+ax+b
+double b, a; // коэффициенты
+int64_t p = 1, q = 1;
+int64_t x,y;
 #endif //AUTHENTICATION_PROTOCOL_HEADER_HPP

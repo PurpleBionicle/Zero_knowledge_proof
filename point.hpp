@@ -46,8 +46,8 @@ public:
         } else {
             alfa = (B.y - this->y) / (B.x - this->x);
         }
-        A.x = pow(alfa, 2) - this->x - B.x; ////Добавить по модулю q
-        A.y = alfa * (this->x - A.x) - this->y;////Добавить по модулю q (делитель мощности группы )
+        A.x = pow(alfa, 2) - this->x - B.x; ////Добавить по модулю p
+        A.y = alfa * (this->x - A.x) - this->y;////Добавить по модулю p
         return A;
     }
 
@@ -58,8 +58,8 @@ public:
         } else {
             alfa = (B.y - this->y) / (B.x - this->x);
         }
-        this->x = pow(alfa, 2) - this->x - B.x;////Добавить по модулю q
-        this->y = alfa * (this->x - this->x) - this->y;////Добавить по модулю q
+        this->x = pow(alfa, 2) - this->x - B.x;////Добавить по модулю p
+        this->y = alfa * (this->x - this->x) - this->y;////Добавить по модулю p
         return *this;
     }
 

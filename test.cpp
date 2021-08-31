@@ -2,8 +2,9 @@
 
 #include "main.cpp"
 
-TEST(BooleanFunction, Construct)
+TEST(1)
 {
+    EXPECT_EQ(1,1);
 // проверка на сингулярность  эллиптической кривой.
 
 //Проверка G∈эллиптическая кривая

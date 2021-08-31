@@ -1,28 +1,45 @@
 #include "header.hpp"
 #include "point.hpp"
 
-//elliptical curve y^2=x^3+ax+b
-//double b, a; // коэффициенты
+//secp192k1
+//p = FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE FFFFEE37
+//a = 00000000 00000000 00000000 00000000 00000000 00000000
+//b = 00000000 00000000 00000000 00000000 00000000 00000003
+//n = FFFFFFFF FFFFFFFF FFFFFFFE 26F2FC17 0F69466A 74DEFD8D
 
+// secp224k1
+//p = FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE FFFFE56D
+//a = 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+//b = 00000000 00000000 00000000 00000000 00000000 00000000 00000005
 
+//Secp256k1
+///FULL
+//p = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
+//а = 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+//б = 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000007
+//Наконец, порядок n группы G :
+//
+//n = FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364141
+// надо найти q - делитель n
+//x = 79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798
+//y = 483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8
 
 void client(int64_t p, int64_t q) {
     //Абонент A выбирает случайные числа xi , 1≤xi≤ q−2
     //и вычисляет значения Yi =[−xi ]G, i=1,, m.
-    int m = 1;
+    int m = 1; ///какое m выбрать
     std::vector<int> x(m);
     point G;
 
     std::vector<point> Y(m);
     for (int i = 0; i < m; ++i) {
-        Y[i] = G * x[i];
+        Y[i] = G * x[i]; //оператор умножения точки на число
     }
 
 }
 
 int main() {
     //clients     //server
-    int64_t p = 1, q = 1;
     client(p, q);
 
     return 0;
