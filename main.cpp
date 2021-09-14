@@ -1,5 +1,4 @@
 #include "header.hpp"
-#include "point.hpp"
 int main() {
     //clients     //server
    server();

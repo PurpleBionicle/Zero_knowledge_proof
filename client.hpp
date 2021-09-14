@@ -41,10 +41,11 @@ public:
         int q = curve.find_biggest_prime_divisor();
         s = (get_k() + sum(bit_string)) % q;
         if (s < 0) { s += q; }
+        return 0; //////// ПОТОМ ЗАМЕНИТЬ
     }
 
     int get_m() {
-        int m;
+        int m=1;
         ///Добавить РАНДОМ m
         ///причем если была инициация вернуть старое значение
         return m;
@@ -67,6 +68,8 @@ private:
         //Абонент A выбирает случайные числа xi , 1≤xi≤ q−2
         ///ДОБАВИТЬ РАНДОМ X
         ///причем если была инициация вернуть старое значение
+        std::vector<int> a;
+        return a;
     }
 
     int sum(int &bit_string) {
@@ -75,7 +78,7 @@ private:
         std::vector<int> x(m);
         x = generate_xi(m);
         int binary_string = two_notation(bit_string);// в 2сс
-
+        return 0;
     }
 };
 

@@ -10,6 +10,5 @@
 #include <exception>
 #include "client.hpp"
 #include "server.hpp"
-double  a=2;// коэффициент кривой
-int p=2;
+//double  a=2;// коэффициент кривой
 #endif //AUTHENTICATION_PROTOCOL_HEADER_HPP
