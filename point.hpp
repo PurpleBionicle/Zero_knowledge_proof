@@ -23,22 +23,25 @@ int two_notation(int num) {
 }
 
 double a = 2;// коэффициент кривой
-int p;
+int p=13;
 
 
 int inverse(int mod, int num) {
-    if (num>=mod) {
-        throw std::invalid_argument("value is bigger than module");
+    while(num<0) num+=mod;
+    if (num==0) return 0;
+    if (num >= mod) {
+        while (num>=mod)
+            num-=mod;
     }
     int x = 1, y = 0;
     int x1 = 0, y1 = 1;
     int q;
-    int module =  mod;
-    int num_to_inverse =  num;
+    int module = mod;
+    int num_to_inverse = num;
     int i = 0;
-    while ( mod != 1 && num != 1) {
-        if ( mod > num)q =  mod / num;
-        else q = num /  mod;
+    while (mod != 1 && num != 1) {
+        if (mod > num)q = mod / num;
+        else q = num / mod;
         if (i % 2 == 0) {
             x = x - q * x1;
             y = y - q * y1;
@@ -50,7 +53,7 @@ int inverse(int mod, int num) {
         }
         ++i;
     }
-    if ( mod == 1) {
+    if (mod == 1) {
         if (y < 0)y += module;
         return y;
     } else {
@@ -66,7 +69,7 @@ public:
     point(int xx, int yy) { x = xx, y = yy; };
     int x, y;
 
-    bool operator==(point &B) const {
+    bool operator==(point B) const {
         if (B.x == this->x && B.y == this->y) return true;
         return false;
     }
@@ -80,11 +83,17 @@ public:
     point operator+(point &B) const {
         point A;
         int alfa;
+        if (B.x==0 && B.y==0) {A.y=this->y;A.x=this->x;return A;}
+        if (this->x==0 && this->y==0) {A.y=B.y;B.x=0;return A;}
+
+        if (this->x==B.x &&  this->y==-B.y) {A.x=0;A.y=0;return A;}
         if (*this == B) {
-            alfa = (3 * pow(B.x, 2) + a) * inverse(p,2 * B.y);
+            alfa = (3 * pow(B.x, 2) + a) * inverse(p, 2 * B.y);
         } else {
-            alfa = (B.y - this->y) * inverse(p,B.x - this->x);
+            alfa = (B.y - this->y) * inverse(p, B.x - this->x);
         }
+        if (alfa==0){A.x=0;A.y=0;return A;}
+
         A.x = (alfa * alfa - this->x - B.x) % p;
         A.y = (alfa * (this->x - A.x) - this->y) % p;
         if (A.x < 0) A.x += p;
@@ -94,14 +103,23 @@ public:
 
     point operator+=(point &B) {
         int alfa;
-        if (*this == B) {
-            alfa = (3 * pow(B.x, 2) + a) * inverse(p,2 * B.y);
-        } else {
-            alfa = (B.y - this->y) * inverse(p,B.x - this->x);
+        if (B.x==0 && B.y==0) return *this;
+        if (this->x==0 && this->y==0) {this->y=B.y;this->x=B.x;return *this;}
+
+        if (this->x == B.x && this->y==-B.y){ this->x=0;
+            this->y=0;
+            return *this;
         }
+        if (*this == B) {
+            alfa = (3 * pow(B.x, 2) + a) * inverse(p, 2 * B.y);
+        } else {
+            alfa = (B.y - this->y) * inverse(p, B.x - this->x);
+        }
+        if (alfa==0){ this->x=0;this->y=0;return *this;}
+
         int xx = this->x;
-        this->x = (alfa * alfa - this->x - B.x) % p;////Добавить по модулю p
-        this->y = (alfa * (xx - this->x) - this->y) % p;////Добавить по модулю p
+        this->x = (alfa * alfa - this->x - B.x) % p;
+        this->y = (alfa * (xx - this->x) - this->y) % p;
         if (this->x < 0) this->x += p;
         if (this->y < 0) this->y += p;
         return *this;

@@ -3,6 +3,8 @@
 #define AUTHENTICATION_PROTOCOL_SERVER_HPP
 #include "header.hpp"
 #include "point.hpp"
+#include "client.hpp"
+#include "curve.hpp"
 void server()
 {
     Curve curve;

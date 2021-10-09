@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
 #include "header.hpp"
+#include "point.hpp"
+#include "curve.hpp"
 
-TEST(Example, EmptyTest) {
-    EXPECT_TRUE(true);
-}
 
 TEST(points,constructors){
     point a(2,3);
@@ -26,7 +25,7 @@ TEST(points,sum_multi)
     EXPECT_EQ(a+a+a,a*3);
     b+=a;
     EXPECT_EQ(b,a+a);
-   //// EXPECT_EQ(a+a+a+a,a*4); //  бесконечный запуск ??????
+    EXPECT_EQ(a+a+a+a,a*4);
 }
 // проверка на сингулярность  эллиптической кривой.
 

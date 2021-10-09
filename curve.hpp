@@ -12,7 +12,7 @@
 //Наконец, порядок n группы G :
 //
 //n = FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364141
-// надо найти q - делитель n
+//
 //x = 0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798
 //y = 0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8
 
@@ -28,7 +28,7 @@ public:
     {
         return this->G;
     }
-    int find_biggest_prime_divisor()//делитель порядка группы
+    int find_biggest_prime_divisor()//делитель порядка группы /// УДАЛИТЬ ТК КОФАКТОР РАВЕН 1
     {
         int div = 2;
         while (order > 1)
