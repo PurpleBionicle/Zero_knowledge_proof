@@ -21,10 +21,10 @@ project(authentication_protocol)
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-set(CMAKE_MODULE_PATH "/usr/local/lib")
-#find_package(GMP REQUIRED)
-find_library(gmp gmpxx.h)
-#set(GMP_DIR "~/gmp-6.2.1")
+
+include_directories(${PROJECT_NAME} ${GMP_DIR}/include)
+find_library(GMP_LIBRARY NAMES gmp PATHS "/usr/local/lib")
+
 
 add_library(${PROJECT_NAME} STATIC
         ${CMAKE_CURRENT_SOURCE_DIR}/header.hpp
@@ -36,8 +36,7 @@ add_library(${PROJECT_NAME} STATIC
 
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-target_link_libraries(demo gmp libgmp)
-
+target_link_libraries(demo gmp -lgmpxx -lgmp)
 
 add_executable(tests test.cpp)
 
