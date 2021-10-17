@@ -36,9 +36,9 @@ public:
 
     //шаг 5
     int clients_summation(int &bit_string) {
-        int s;
+        mpz_class s;
         Curve curve;
-        int q = curve.find_biggest_prime_divisor();
+        mpz_class q = curve.find_biggest_prime_divisor();
         s = (get_k() + sum(bit_string)) % q;
         if (s < 0) { s += q; }
         return 0; //////// ПОТОМ ЗАМЕНИТЬ
@@ -77,7 +77,7 @@ private:
         int m = get_m();
         std::vector<int> x(m);
         x = generate_xi(m);
-        int binary_string = two_notation(bit_string);// в 2сс
+        mpz_class binary_string = two_notation(bit_string);// в 2сс
         return 0;
     }
 };

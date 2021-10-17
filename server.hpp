@@ -8,6 +8,7 @@
 void server()
 {
     Curve curve;
+    std::cout<<curve.get_order();
     client A;
     std::vector<point>Y;
     Y= A.client_gives_initial_points(curve);

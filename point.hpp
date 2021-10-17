@@ -8,10 +8,10 @@
 
 #include "header.hpp"
 
-int two_notation(int num) {
+mpz_class two_notation(mpz_class num) {
     //перевод из 10сс в 2сс
     // необходимо для минимизации числа итераций суммирования
-    int result = 0, k = 1;
+    mpz_class result = 0, k = 1;
 
     while (num) {
         result += (num % 2) * k;
@@ -66,8 +66,9 @@ class point {
 public:
     point() { x = 0, y = 0; };
 
-    point(int xx, int yy) { x = xx, y = yy; };
-    int x, y;
+    point(mpz_class xx, mpz_class yy) { x = xx, y = yy; };
+    mpz_class x, y;
+
 
     bool operator==(point B) const {
         if (B.x == this->x && B.y == this->y) return true;
@@ -82,13 +83,13 @@ public:
 
     point operator+(point &B) const {
         point A;
-        int alfa;
+        mpz_class alfa;
         if (B.x==0 && B.y==0) {A.y=this->y;A.x=this->x;return A;}
         if (this->x==0 && this->y==0) {A.y=B.y;B.x=0;return A;}
 
         if (this->x==B.x &&  this->y==-B.y) {A.x=0;A.y=0;return A;}
         if (*this == B) {
-            alfa = (3 * pow(B.x, 2) + a) * inverse(p, 2 * B.y);
+            alfa = (3 * B.x*B.x + a) * inverse(p, 2 * B.y);
         } else {
             alfa = (B.y - this->y) * inverse(p, B.x - this->x);
         }
@@ -102,7 +103,7 @@ public:
     }
 
     point operator+=(point &B) {
-        int alfa;
+        mpz_class alfa;
         if (B.x==0 && B.y==0) return *this;
         if (this->x==0 && this->y==0) {this->y=B.y;this->x=B.x;return *this;}
 
@@ -111,13 +112,13 @@ public:
             return *this;
         }
         if (*this == B) {
-            alfa = (3 * pow(B.x, 2) + a) * inverse(p, 2 * B.y);
+            alfa = (3 * B.x*B.x + a) * inverse(p, 2 * B.y);
         } else {
             alfa = (B.y - this->y) * inverse(p, B.x - this->x);
         }
         if (alfa==0){ this->x=0;this->y=0;return *this;}
 
-        int xx = this->x;
+        mpz_class xx = this->x;
         this->x = (alfa * alfa - this->x - B.x) % p;
         this->y = (alfa * (xx - this->x) - this->y) % p;
         if (this->x < 0) this->x += p;
@@ -125,15 +126,15 @@ public:
         return *this;
     }
 
-    point operator*(int k) const {
-        int k2 = two_notation(k);// в 2 сс
+    point operator*(mpz_class k) const {
+        mpz_class k2 = two_notation(k);// в 2 сс
 
         point Y;
         std::vector<point> templ;
         templ.push_back(*this);
 
         int i = 1;
-        int k_2 = k2;
+        mpz_class k_2 = k2;
         while (k_2 != 0 && k_2 != 1) //в 2 сс
         {
             Y = templ[i - 1] + templ[i - 1];
