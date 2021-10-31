@@ -22,12 +22,12 @@ public:
     //шаг 4
     std::vector<point> client_gives_initial_points() {
 
-
         std::vector<point> Y(m);
         for (int i = 0; i < m; ++i) {
             ////и вычисляет значения Yi =[−xi ]G, i=1,, m.
-            Y[i] = curve.get_G() * ((-xi[i] % curve.find_biggest_prime_divisor()) + xi[i]);
-            ///оператор умножения точки на число
+            mpz_class mult=(-xi[i]) %p;
+            if (mult<0) mult+=p;
+            Y[i] = curve.get_G() * mult;
         }
         return Y;
     }
@@ -42,10 +42,10 @@ public:
     }
 
     //шаг 6
-    mpz_class clients_summation(mpz_class &binary_string) {
-       // mpz_class binary = two_notation(bit_string);
+    mpz_class clients_summation(mpz_class binary_string) {
         mpz_class s;
         mpz_class q = curve.find_biggest_prime_divisor();
+
         s = (k + sum(binary_string)) % q;
         if (s < 0) { s += q; }
         return s;
@@ -74,18 +74,19 @@ private:
         //где 1≤k≤ q−2,
 //       mpz_random(k.get_mpz_t(), reinterpret_cast<mp_size_t>
 //                                  (curve.find_biggest_prime_divisor().get_mpz_t()) - 2);
+        srand(time(nullptr));
         k = rand();
     }
 
-    //шаг 5.5
+    //шаг 6.5
     mpz_class sum(mpz_class &bit_string) {
         //xi с ai из bit string
         mpz_class result = 0;
         int i = 0;
         while (bit_string) {
-            result += (bit_string % 2) * xi[m - 1 - i];
+            result += (bit_string % 10) * xi[m - 1 - i];
             ++i;
-            bit_string /= 2;
+            bit_string /= 10;
         }
         return result;
     }

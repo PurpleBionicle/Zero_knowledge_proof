@@ -6,6 +6,8 @@
 #define AUTHENTICATION_PROTOCOL_POINT_HPP
 
 
+#include <utility>
+
 #include "header.hpp"
 
 mpz_class two_notation(mpz_class num) {
@@ -30,16 +32,15 @@ class point {
 public:
     point() { x = 0, y = 0; };
 
-    point(mpz_class xx, mpz_class yy) { x = xx, y = yy; };
+    point(mpz_class xx, mpz_class yy) { x = std::move(xx), y = std::move(yy); };
     mpz_class x, y;
 
 
-    bool operator==(point B) const {
-        if (B.x == this->x && B.y == this->y) return true;
-        return false;
+    bool operator==(const point &B) const {
+        return B.x == this->x && B.y == this->y;
     }
 
-    point operator=(point B) {
+    point operator=(const point &B) {
         this->y = B.y;
         this->x = B.x;
         return *this;
@@ -48,7 +49,7 @@ public:
     point operator+(point &B) const {
         point A;
         mpz_class alfa;
-        mpz_class inverse;
+        mpz_class inverse = 0;
         if (B.x == 0 && B.y == 0) {
             A.y = this->y;
             A.x = this->x;
@@ -56,7 +57,7 @@ public:
         }
         if (this->x == 0 && this->y == 0) {
             A.y = B.y;
-            B.x = 0;
+            A.x = B.x;
             return A;
         }
 
@@ -67,12 +68,12 @@ public:
         }
         if (*this == B) {
             mpz_class double_y = 2 * B.y;
-            mpz_invert(inverse.get_mpz_t(), p.get_mpz_t(), double_y.get_mpz_t());
-            alfa = (3 * B.x * B.x + a) * inverse;
+            mpz_invert(inverse.get_mpz_t(), double_y.get_mpz_t(), p.get_mpz_t());
+            alfa = ((3 * B.x * B.x + a) * inverse) % p;
         } else {
-            mpz_class diff = B.x - x;
-            mpz_invert(inverse.get_mpz_t(), p.get_mpz_t(), diff.get_mpz_t());
-            alfa = (B.y - this->y) * inverse;
+            mpz_class diff = this->x - B.x;
+            mpz_invert(inverse.get_mpz_t(), diff.get_mpz_t(), p.get_mpz_t());
+            alfa = ((this->y - B.y) * inverse) % p;
         }
         if (alfa == 0) {
             A.x = 0;
@@ -81,7 +82,8 @@ public:
         }
 
         A.x = (alfa * alfa - this->x - B.x) % p;
-        A.y = (alfa * (this->x - A.x) - this->y) % p;
+        A.y = (alfa * (A.x - this->x) + this->y) % p;
+        A.y *= -1;
         if (A.x < 0) A.x += p;
         if (A.y < 0) A.y += p;
         return A;
@@ -104,12 +106,12 @@ public:
         }
         if (*this == B) {
             mpz_class double_y = 2 * B.y;
-            mpz_invert(inverse.get_mpz_t(), p.get_mpz_t(), double_y.get_mpz_t());
-            alfa = (3 * B.x * B.x + a) * inverse;
+            mpz_invert(inverse.get_mpz_t(), double_y.get_mpz_t(), p.get_mpz_t());
+            alfa = ((3 * B.x * B.x + a) * inverse) % p;
         } else {
-            mpz_class diff = B.x - x;
-            mpz_invert(inverse.get_mpz_t(), p.get_mpz_t(), diff.get_mpz_t());
-            alfa = (B.y - this->y) * inverse;
+            mpz_class diff = this->x - B.x;
+            mpz_invert(inverse.get_mpz_t(), diff.get_mpz_t(), p.get_mpz_t());
+            alfa = ((this->y - B.y) * inverse) % p;
         }
         if (alfa == 0) {
             this->x = 0;
@@ -118,15 +120,18 @@ public:
         }
 
         mpz_class xx = this->x;
+        mpz_class yy = this->y;
         this->x = (alfa * alfa - this->x - B.x) % p;
-        this->y = (alfa * (xx - this->x) - this->y) % p;
+        this->y = (alfa * (this->x - xx) + yy) % p;
+        //this->y = (alfa * (this->x - xx) + this->y) % p;
         if (this->x < 0) this->x += p;
+        this->y *= -1;
         if (this->y < 0) this->y += p;
         return *this;
     }
 
-    point operator*(const mpz_class& k) const {
-        if (k==0){return {0,0};}
+    point operator*(const mpz_class &k) const {
+        if (k == 0) { return {0, 0}; }
         mpz_class k2 = two_notation(k);// в 2 сс
 
         point Y;
@@ -135,7 +140,8 @@ public:
 
         int i = 1;
         mpz_class k_2 = k2;
-        while (k_2 != 0 && k_2 != 1) //в 2 сс
+        k_2 /= 10;
+        while (k_2) //в 2 сс
         {
             Y = templ[i - 1] + templ[i - 1];
             templ.push_back(Y);
@@ -147,13 +153,13 @@ public:
         //теперь из этих степеней двойки собираем наше число
         point result;
         bool init = false; //первая точка не плюсуется с (0,0) а просто приравнивается
-        for (int j = 0; j < templ.size(); ++j) {
+        for (auto &j: templ) {
             if (k2 % 10 != 0) {
                 if (!init) {
-                    result = templ[j];
+                    result = j;
                     init = true;
                 } else {
-                    result += templ[j];
+                    result += j;
                 }
             }
             k2 /= 10;
@@ -162,41 +168,5 @@ public:
     }
 };
 
-//Расширенный Алгоритм Евклида
-/*int inverse(int mod, int num) {
-    while(num<0) num+=mod;
-    if (num==0) return 0;
-    if (num >= mod) {
-        while (num>=mod)
-            num-=mod;
-    }
-    int x = 1, y = 0;
-    int x1 = 0, y1 = 1;
-    int q;
-    int module = mod;
-    int num_to_inverse = num;
-    int i = 0;
-    while (mod != 1 && num != 1) {
-        if (mod > num)q = mod / num;
-        else q = num / mod;
-        if (i % 2 == 0) {
-            x = x - q * x1;
-            y = y - q * y1;
-            mod = x * module + y * num_to_inverse;
-        } else {
-            x1 = x1 - q * x;
-            y1 = y1 - q * y;
-            num = x1 * module + y1 * num_to_inverse;
-        }
-        ++i;
-    }
-    if (mod == 1) {
-        if (y < 0)y += module;
-        return y;
-    } else {
-        if (y1 < 0)y1 += module;
-        return y1;
-    }
-}*/
 
 #endif //AUTHENTICATION_PROTOCOL_POINT_HPP

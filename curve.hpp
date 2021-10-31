@@ -6,6 +6,10 @@
 #include "header.hpp"
 #include "point.hpp"
 
+void singularity(mpz_class a, mpz_class b)
+{
+    if (4*a*a*a+27*b*b==0) throw std::invalid_argument("curve is singularity");
+}
 
 class Curve {
     //elliptical curve y^2=x^3+ax+b
@@ -22,17 +26,19 @@ private:
         order = order1;
     }
 
+    void set_coeff() {
+        mpz_class a1("2", 16);
+        a = a1;
+        mpz_class b1("0", 16);
+        b = b1;
+    }
+
     void set_p() {
-        mpz_class p1("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16);
+        mpz_class p1("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", 16);
         p = p1;
     }
 
-    void set_koef_of_curve() {
-        mpz_class a1("00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000", 16);
-        a = a1;
-        mpz_class b1("00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000007", 16);
-        b = b1;
-    }
+
 
     void set_G() {
         mpz_class x1("79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798", 16);
@@ -45,9 +51,14 @@ public:
     Curve() {
         set_order();
         set_p();
-        set_koef_of_curve();
         set_G();
+        set_coeff();
+        singularity(a,b);
     }
+
+    mpz_class get_a() { return a; }
+
+    mpz_class get_b() { return b; }
 
     mpz_class get_order() { return order; }
 
@@ -59,8 +70,8 @@ public:
 
     mpz_class find_biggest_prime_divisor()//делитель порядка группы //
     {
-        if (kofactor == 1) { return p; }
-        int div = 2;
+        if (kofactor == 1) { return order; }
+       /* int div = 2;
         while (order > 1) {
             while (order % div == 0) {
                 order /= div;
@@ -68,7 +79,7 @@ public:
             if (div == 2) div++;
             else div += 2;
         }
-        return div - 2;
+        return div - 2;*/
     }
 };
 

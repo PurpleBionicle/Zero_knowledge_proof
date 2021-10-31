@@ -40,4 +40,6 @@ target_link_libraries(demo gmp -lgmpxx -lgmp)
 
 add_executable(tests test.cpp)
 
-target_link_libraries(tests PUBLIC GTest::gtest_main)
+
+
+target_link_libraries(tests PUBLIC GTest::gtest_main gmp -lgmpxx -lgmp)
