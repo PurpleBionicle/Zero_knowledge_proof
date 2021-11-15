@@ -25,8 +25,7 @@ public:
         std::vector<point> Y(m);
         for (int i = 0; i < m; ++i) {
             ////и вычисляет значения Yi =[−xi ]G, i=1,, m.
-            mpz_class mult=(-xi[i]) %p;
-            if (mult<0) mult+=p;
+            mpz_class mult=(-xi[i]) +p;
             Y[i] = curve.get_G() * mult;
         }
         return Y;

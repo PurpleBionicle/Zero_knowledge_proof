@@ -27,9 +27,9 @@ private:
     }
 
     void set_coeff() {
-        mpz_class a1("2", 16);
+        mpz_class a1("0", 16);
         a = a1;
-        mpz_class b1("0", 16);
+        mpz_class b1("7", 16);
         b = b1;
     }
 

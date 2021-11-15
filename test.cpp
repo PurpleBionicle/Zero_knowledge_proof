@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "header.hpp"
-#include "point.hpp"
-#include "curve.hpp"
+#include "realization/header.hpp"
+#include "realization/point.hpp"
+#include "realization/curve.hpp"
 
 
 TEST(points, constructors) {

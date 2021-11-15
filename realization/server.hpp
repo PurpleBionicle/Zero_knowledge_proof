@@ -9,11 +9,11 @@
 
 point sum(mpz_class bit_string, std::vector<point> &Y) {
     //Yi с ai из bit string
-    point result;
+    point result(0,0);
     int i = 0;
     while (bit_string) {
         point current = Y[Y.size() - 1 - i] * (bit_string % 10);
-        result =result+ current;
+        result +=current;
         ++i;
         bit_string /= 10;
     }
@@ -44,7 +44,7 @@ void server() {
 
     srand(time(nullptr));
     mpz_class bit_string = rand() % static_cast<int>(pow(2, Y.size())); //длины m
-    mpz_class binary = two_notation(bit_string);
+    mpz_class binary = two_notation(bit_string);// в двоичную 
     std::cout << binary << "\n";
     mpz_class s = A.clients_summation(binary);
 

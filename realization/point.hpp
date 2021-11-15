@@ -24,9 +24,8 @@ mpz_class two_notation(mpz_class num) {
     return result;
 }
 
-mpz_class a = 2;// коэффициент кривой
+mpz_class a = 0;// коэффициент кривой
 mpz_class p("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16);
-
 
 class point {
 public:

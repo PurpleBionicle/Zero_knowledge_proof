@@ -27,12 +27,12 @@ find_library(GMP_LIBRARY NAMES gmp PATHS "/usr/local/lib")
 
 
 add_library(${PROJECT_NAME} STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/header.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/point.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/curve.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/server.hpp
+        realization/header.hpp
+        realization/point.hpp
+        realization/curve.hpp
+        realization/server.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/client.hpp)
+        realization/client.hpp)
 
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
