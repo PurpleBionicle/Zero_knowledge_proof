@@ -38,7 +38,7 @@ add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
 target_link_libraries(demo gmp -lgmpxx -lgmp)
 
-add_executable(tests test.cpp)
+add_executable(tests realization/test.cpp)
 
 
 

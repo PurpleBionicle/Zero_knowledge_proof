@@ -7,12 +7,12 @@
 #include "client.hpp"
 #include "curve.hpp"
 
-point sum(mpz_class bit_string, std::vector<point> &Y) {
+Point sum(mpz_class bit_string, std::vector<Point> &Y) {
     //Yi с ai из bit string
-    point result(0,0);
+    Point result(0,0);
     int i = 0;
     while (bit_string) {
-        point current = Y[Y.size() - 1 - i] * (bit_string % 10);
+        Point current = Y[Y.size() - 1 - i] * (bit_string % 10);
         result +=current;
         ++i;
         bit_string /= 10;
@@ -20,22 +20,23 @@ point sum(mpz_class bit_string, std::vector<point> &Y) {
     return result;
 }
 
-bool check_equality(point &R, mpz_class &s,
-                    std::vector<point> &Y, mpz_class &binary) {
-    point c = curve.get_G() * s;
-    point d = sum(binary, Y)+c;
+bool check_equality(Point &R, mpz_class &s,
+                    std::vector<Point> &Y, mpz_class &binary) {
+    Point c = curve.get_G() * s;
+    Point d = sum(binary, Y)+c;
     return R == d;
 }
 
 
 void server() {
 
-    client A;
 
-    std::vector<point> Y;
+    Client A;
+
+    std::vector<Point> Y;
     Y = A.client_gives_initial_points();
 
-    point R = A.clients_point();
+    Point R = A.clients_point();
 
     //. Проверяющий B генерирует случайную битовую строку
     // ( a1 , ..., am)∈{0, 1}m и передает ее абоненту A.
