@@ -31,10 +31,10 @@ add_library(${PROJECT_NAME} STATIC
         realization/point.hpp
         realization/curve.hpp
         realization/server.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+        realization/main.cpp
         realization/client.hpp)
 
-add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+add_executable(demo realization/main.cpp)
 
 target_link_libraries(demo gmp -lgmpxx -lgmp)
 

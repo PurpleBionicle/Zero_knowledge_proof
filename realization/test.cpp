@@ -65,5 +65,7 @@ TEST(curve, singularity)
     // проверка на сингулярность  эллиптической кривой.
     EXPECT_ANY_THROW(singularity(0,0));
     EXPECT_ANY_THROW(singularity(-3,2));
-
+    Curve curve1;
+    int c=1;
+    EXPECT_ANY_THROW(curve1.choose_curve(c));
 }

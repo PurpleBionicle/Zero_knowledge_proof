@@ -9,11 +9,16 @@
 
 Point sum(mpz_class bit_string, std::vector<Point> &Y) {
     //Yi с ai из bit string
-    Point result(0,0);
+    Point result(0, 0);
     int i = 0;
     while (bit_string) {
         Point current = Y[Y.size() - 1 - i] * (bit_string % 10);
-        result +=current;
+        result += current;
+        std::cout<<"bit="<<bit_string%10<<"\n";
+        std::cout<<"current="<<current.x<<"\n";
+        std::cout<<"current="<<current.y<<"\n";
+        std::cout<<"result="<<result.x<<"\n";
+        std::cout<<"result="<<result.y<<"\n";
         ++i;
         bit_string /= 10;
     }
@@ -22,8 +27,12 @@ Point sum(mpz_class bit_string, std::vector<Point> &Y) {
 
 bool check_equality(Point &R, mpz_class &s,
                     std::vector<Point> &Y, mpz_class &binary) {
-    Point c = curve.get_G() * s;
-    Point d = sum(binary, Y)+c;
+    Point sG = curve.get_G() * s;
+    Point d = sum(binary, Y) + sG;
+    std::cout<<d.x<<"\n";
+    std::cout<<d.y<<"\n";
+    std::cout<<R.x<<"\n";
+    std::cout<<R.y<<"\n";
     return R == d;
 }
 
@@ -51,9 +60,11 @@ void server() {
 
 
     //Теперь если выполнено равенство
-    if (check_equality(R, s, Y, binary))
+    if (check_equality(R, s, Y, binary)) {
         std::cout << "ПРИНЯТО";
-    else std::cerr << "ОТКАЗАНО";
+    } else {
+        std::cerr << "ОТКАЗАНО";
+    }
 }
 
 #endif //AUTHENTICATION_PROTOCOL_SERVER_HPP

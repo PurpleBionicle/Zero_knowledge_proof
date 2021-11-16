@@ -71,6 +71,7 @@ void Client::generate_k() {
 //                                  (curve.find_biggest_prime_divisor().get_mpz_t()) - 2);
     srand(time(nullptr));
     k = rand();
+//    k=12;
 }
 
 std::vector<Point> Client::client_gives_initial_points() {
@@ -78,7 +79,9 @@ std::vector<Point> Client::client_gives_initial_points() {
     std::vector<Point> Y(m);
     for (int i = 0; i < m; ++i) {
         ////и вычисляет значения Yi =[−xi ]G, i=1,, m.
-        mpz_class mult = (-xi[i]) + p;
+        mpz_class mult = (-xi[i]) % p;
+//        mpz_class mult = (xi[i]) % p;
+        while (mult<0){mult+=p;}
         Y[i] = curve.get_G() * mult;
     }
     return Y;
@@ -96,8 +99,8 @@ mpz_class Client::clients_summation(mpz_class binary_string) {
     mpz_class s;
     mpz_class q = curve.find_biggest_prime_divisor();
 
-    s = (k + sum(binary_string)) % q;
-    if (s < 0) { s += q; }
+    s = k + (sum(binary_string)) % q;
+    while (s < 0) { s += q; }
     return s;
 }
 

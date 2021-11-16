@@ -25,7 +25,7 @@ mpz_class two_notation(mpz_class num) {
 }
 
 mpz_class a = 0;// коэффициент кривой
-mpz_class p("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16);
+mpz_class p("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", 16);
 
 class Point {
 public:
@@ -92,8 +92,8 @@ Point Point::operator+(Point &B) const {
     A.x = (alfa * alfa - this->x - B.x) % p;
     A.y = (alfa * (A.x - this->x) + this->y) % p;
     A.y *= -1;
-    if (A.x < 0) A.x += p;
-    if (A.y < 0) A.y += p;
+    while (A.x < 0) A.x += p;
+    while (A.y < 0) A.y += p;
     return A;
 }
 
@@ -132,9 +132,9 @@ Point Point::operator+=(Point &B) {
     this->x = (alfa * alfa - this->x - B.x) % p;
     this->y = (alfa * (this->x - xx) + yy) % p;
     //this->y = (alfa * (this->x - xx) + this->y) % p;
-    if (this->x < 0) this->x += p;
+    while (this->x < 0) this->x += p;
     this->y *= -1;
-    if (this->y < 0) this->y += p;
+    while (this->y < 0) this->y += p;
     return *this;
 }
 
