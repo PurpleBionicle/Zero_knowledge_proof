@@ -8,109 +8,13 @@ body {
 
 .anonimus {
     margin-top: auto;
-    margin-left:40%;
+    margin-left: 40%;
     margin-right: auto;
 }
 
-.Y, .R, .S2, .check {
-    animation-duration: 15s;
-    color: #34c400;
-}
 
-.Y {
-    animation-name: Y;
-}
-
-.R {
-    animation-name: R;
-    margin: auto;
-}
-
-.S2 {
-    animation-name: S2;
-}
-
-.check {
-    animation-name: check;
-    text-align: right;
-}
-
-@keyframes Y {
-    0% {
-        opacity: 1;
-    }
-    20% {
-        opacity: 1;
-    }
-    21% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes R {
-    0% {
-        opacity: 0;
-    }
-    20% {
-        opacity: 0;
-    }
-    21% {
-        opacity: 1;
-    }
-    39% {
-        opacity: 1;
-    }
-    40% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes S2 {
-    0% {
-        opacity: 0;
-    }
-    60% {
-        opacity: 0;
-    }
-    61% {
-        opacity: 1;
-    }
-    79% {
-        opacity: 1;
-    }
-    80% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes check {
-    0% {
-        opacity: 0;
-    }
-    80% {
-        opacity: 0;
-    }
-    81% {
-        opacity: 1;
-    }
-    99% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.content_circle1, .content_circle2, .S {
+.content_circle1, .content_circle2, .S, .content_circle3,
+.content_circle4, .S1 {
     width: 200px;
     height: 200px;
     color: rgba(0, 0, 0, 0.74);
@@ -136,7 +40,7 @@ body {
     top: -800px;
 
     animation-name: circle;
-    animation-duration: 3s;
+    animation-duration: 1s;
 
 
 }
@@ -145,7 +49,7 @@ body {
     top: -1050px;
 
     animation-name: circle2;
-    animation-duration: 6s;
+    animation-duration: 2s;
 }
 
 @keyframes circle {
@@ -185,7 +89,7 @@ body {
 
 .binary {
     animation-name: binary;
-    animation-duration: 9s;
+    animation-duration: 3s;
     animation-delay: 0s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
@@ -224,7 +128,7 @@ body {
     width: 150px;
     height: 150px;
     animation-name: S;
-    animation-duration: 12s;
+    animation-duration: 4s;
 }
 
 @keyframes S {
@@ -250,7 +154,7 @@ body {
 
 .done {
     animation-name: done;
-    animation-duration: 15s;
+    animation-duration: 5s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
     left: calc(100% - 320px);
@@ -277,5 +181,109 @@ body {
     100% {
         left: 5%;
         opacity: 0;
+    }
+}
+
+.content_circle3, .content_circle4, .S1 {
+    background: #ffdd00;
+    border: 30px solid #d20c22;
+}
+
+.content_circle3 {
+    top: +400px;
+    animation-name: circle3;
+    animation-duration: 6s;
+}
+
+@keyframes circle3 {
+    0% {
+        left: 50%;
+        bottom: auto;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: -320px;
+    }
+}
+
+.content_circle4 {
+    top: -1200px;
+
+    animation-name: circle4;
+    animation-duration: 7s;
+}
+
+@keyframes circle4 {
+    0% {
+        left: 50%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: calc(-1200px - 700px);
+    }
+}
+
+.S1 {
+    top: -1450px;
+    border-radius: 25%;
+    width: 150px;
+    height: 150px;
+    animation-name: S1;
+    animation-duration: 8s;
+}
+
+@keyframes S1 {
+    0% {
+        left: 50%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: calc(-1450px - 700px);
+
+    }
+}
+
+.NO {
+    animation-name: NO;
+    animation-duration: 11s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: calc(100% - 320px);
+    top: -2200px;
+    position: relative;
+}
+
+@keyframes NO {
+    0% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+    72% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: -2200px;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 50%;
+        opacity: 0;
+        top: -1500px;
     }
 }

@@ -6,6 +6,9 @@ body {
     background-color: #1c1b1b;
 }
 
+.header{
+    font-size: 300%;
+}
 
 .btnflip, .btnflip1 {
     position: absolute;
