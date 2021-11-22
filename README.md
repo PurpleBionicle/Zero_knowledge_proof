@@ -12,9 +12,10 @@
   ![main page](demonstration/pic/main.png)
   ![prover](demonstration/pic/visual.png)
   <br/>
-
+---
 <h3>UML-диаграмма</h3>
 ![uml](demonstration/pic/uml.png)
+---
 <h3>Процесс отладки раундов протокола</h3>
 
 - [x] R=[k]*G <br/>
