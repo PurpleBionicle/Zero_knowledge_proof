@@ -32,7 +32,8 @@ add_library(${PROJECT_NAME} STATIC
         realization/curve.hpp
         realization/server.hpp
         realization/main.cpp
-        realization/client.hpp)
+        realization/client.hpp
+        realization/attacker.hpp)
 
 add_executable(demo realization/main.cpp)
 

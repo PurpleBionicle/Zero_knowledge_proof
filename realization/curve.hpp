@@ -6,6 +6,7 @@
 #include "header.hpp"
 #include "point.hpp"
 
+//шаг 4
 void singularity(const mpz_class &aClass, const mpz_class &b) {
     if (4 * aClass * aClass * aClass + 27 * b * b == 0)
         throw std::invalid_argument("curve is singularity");
@@ -22,25 +23,23 @@ private:
     int kofactor = 1;
 
     void set_order();
+
     void set_coeff(int &k);
+
     void set_p();
+
     void set_G();
 
 public:
     Curve();
 
+    //шаг2-3
     void choose_curve(int &k) {
         set_coeff(k);
         singularity(a, b);
     }
 
-    mpz_class get_a() { return a; }
-
-    mpz_class get_b() { return b; }
-
     mpz_class get_order() { return order; }
-
-    mpz_class get_p() { return p; }
 
     Point get_G() {
         return this->G;

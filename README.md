@@ -7,14 +7,17 @@
 
 ---
 
-- [ ] Атака повторного воспроизведения  <br/>
+- [x] Атака повторного воспроизведения  <br/>
+  ![attacker](demonstration/pic/attacker.png)
 - [x] Визуализация  <br/>
   ![main page](demonstration/pic/main.png)
   ![prover](demonstration/pic/visual.png)
   <br/>
+
 ---
 <h3>UML-диаграмма</h3>
 ![uml](demonstration/pic/uml.png)
+<br/>
 ---
 <h3>Процесс отладки раундов протокола</h3>
 
