@@ -24,8 +24,6 @@ mpz_class two_notation(mpz_class num) {
     return result;
 }
 
-mpz_class a = 0;// коэффициент кривой
-mpz_class p("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", 16);
 
 class Point {
 public:
@@ -39,13 +37,13 @@ public:
         return B.x == this->x && B.y == this->y;
     }
 
-    Point operator=(const Point &B) ;
+    Point operator=(const Point &B);
 
-    Point operator+(Point &B) const ;
+    Point operator+(Point &B) const;
 
-    Point operator+=(Point &B) ;
+    Point operator+=(Point &B);
 
-    Point operator*(const mpz_class &k) const ;
+    Point operator*(const mpz_class &k) const;
 };
 
 Point Point::operator=(const Point &B) {

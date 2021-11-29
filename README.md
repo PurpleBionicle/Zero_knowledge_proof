@@ -3,12 +3,15 @@
 <h3>Курсовая работа : </h3>
 
 - [x] Протокол <br/>
-  ![output](demonstration/pic/protocol_prover.png)
+  ![output](demonstration/pic/prover.png)
 
 ---
 
 - [x] Атака повторного воспроизведения  <br/>
-  ![attacker](demonstration/pic/attacker.png)
+  ![attacker](demonstration/pic/attacker1.png)
+
+---
+
 - [x] Визуализация  <br/>
   ![main page](demonstration/pic/main.png)
   ![prover](demonstration/pic/visual.png)
@@ -16,7 +19,7 @@
 
 ---
 <h3>UML-диаграмма</h3>
-![uml](demonstration/pic/uml.png)
+  ![uml](demonstration/pic/uml.jpg)
 <br/>
 ---
 <h3>Процесс отладки раундов протокола</h3>

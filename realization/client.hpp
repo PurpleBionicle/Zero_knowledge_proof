@@ -67,8 +67,6 @@ void Client::choose_xi() {
 void Client::generate_k() {
     //Доказывающий A генерирует случайное целое число k,
     //где 1≤k≤ q−2,
-//       mpz_random(k.get_mpz_t(), reinterpret_cast<mp_size_t>
-//                                  (curve.find_biggest_prime_divisor().get_mpz_t()) - 2);
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist6(

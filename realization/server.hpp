@@ -6,6 +6,7 @@
 #include "point.hpp"
 #include "client.hpp"
 #include "curve.hpp"
+#include "logging.hpp"
 #include "attacker.hpp"
 
 int choose_mode() {
@@ -79,7 +80,6 @@ void server() {
     //шаг10
     mpz_class binary = two_notation(bit_string);// в двоичную
 
-//    std::cout << binary << "\n";//проверка для себя
     //шаг12
     mpz_class s = A->clients_summation(binary);
 
@@ -87,9 +87,11 @@ void server() {
     //Теперь если выполнено равенство
     //шаг13
     if (check_equality(R, s, Y, binary)) {
-        std::cout << "\nДОКАЗАТЕЛЬСТВО ПРИНЯТО";
+        std::cout << "\nTHE PROOF IS ACCEPTED";
+        log(true, "");
     } else {
-        std::cerr << "ОТКАЗАНО";
+        log(false, "");
+        std::cout << "DENIED";
     }
     delete A;
 }

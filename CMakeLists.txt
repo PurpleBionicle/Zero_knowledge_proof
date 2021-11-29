@@ -18,6 +18,8 @@ HunterGate(
 
 project(authentication_protocol)
 
+hunter_add_package(nlohmann_json)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
@@ -37,7 +39,7 @@ add_library(${PROJECT_NAME} STATIC
 
 add_executable(demo realization/main.cpp)
 
-target_link_libraries(demo gmp -lgmpxx -lgmp)
+target_link_libraries(demo gmp nlohmann_json::nlohmann_json -lgmpxx )
 
 add_executable(tests realization/test.cpp)
 

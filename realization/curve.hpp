@@ -5,11 +5,15 @@
 
 #include "header.hpp"
 #include "point.hpp"
+#include "logging.hpp"
 
 //шаг 4
 void singularity(const mpz_class &aClass, const mpz_class &b) {
-    if (4 * aClass * aClass * aClass + 27 * b * b == 0)
-        throw std::invalid_argument("curve is singularity");
+
+    if (4 * aClass * aClass * aClass + 27 * b * b == 0) {
+        log(false, "curve is singularity");
+        exit(1);
+    }
 }
 
 class Curve {
