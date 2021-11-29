@@ -18,8 +18,8 @@
   <br/>
 
 ---
-<h3>UML-диаграмма</h3>
-  ![uml](demonstration/pic/uml.jpg)
+- [x] UML-диаграмма  <br/>
+  ![prover](demonstration/pic/uml.jpg)
 <br/>
 ---
 <h3>Процесс отладки раундов протокола</h3>
