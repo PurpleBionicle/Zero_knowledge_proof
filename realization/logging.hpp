@@ -5,6 +5,7 @@
 
 #include "header.hpp"
 
+//! \brief возвращает дату завершения программы
 std::string add_date() {
     std::string j;
     time_t now = time(nullptr);
@@ -17,6 +18,11 @@ std::string add_date() {
     return j;
 }
 
+/*! записывает в лог файл время и результат программы
+ *
+ * @param flag результат программы
+ * @param error сообщение об ошибки
+ */
 void log(const bool flag, const std::string &error) {
     freopen("Logging.txt", "a", stderr);
     std::clog << add_date();

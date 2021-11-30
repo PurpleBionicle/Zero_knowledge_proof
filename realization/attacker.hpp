@@ -8,6 +8,9 @@
 #include "curve.hpp"
 #include "client.hpp"
 
+
+//!   \brief Класс Attacker показывает демонстрацию атаки возпроизведения
+//!   Каждый метод класса забирает из последнего сеанса соответсвующие данные  и отправляет их серверу.
 class Attacker : public Client {
 public:
     Attacker() = default;

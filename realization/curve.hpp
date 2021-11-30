@@ -8,6 +8,12 @@
 #include "logging.hpp"
 
 //шаг 4
+/*! \brief проверяет выбранную кривую на сингулярность
+ *
+ * \param[in] aClass коэффициент кривой
+ * \param[in] b коэффициент кривой
+ * в случае сингулярности выводит соответсвующий результат в лог файл и заканчивает программу
+ */
 void singularity(const mpz_class &aClass, const mpz_class &b) {
 
     if (4 * aClass * aClass * aClass + 27 * b * b == 0) {
@@ -16,6 +22,14 @@ void singularity(const mpz_class &aClass, const mpz_class &b) {
     }
 }
 
+/*! \brief класс Curve задает параметры эллиптической кривой
+ *
+ * p- модуль поля
+ * G-базовая точка
+ * order- порядок группы
+ * a,b- коэффициенты ,задающие уравнение кривой
+ * kofactor - кофактор . Отношение порядков группы и уиклической подгруппы
+ */
 class Curve {
     //elliptical curve y^2=x^3+ax+b
     //Secp256k1
@@ -26,29 +40,37 @@ private:
     mpz_class a, b; // коэффициенты кривой
     int kofactor = 1;
 
+    //! \brief определяет параметр выбранной кривой
     void set_order();
 
+    //! \brief определяет параметр выбранной кривой
     void set_coeff(int &k);
 
+    //! \brief определяет параметр выбранной кривой
     void set_p();
 
+    //! \brief определяет параметр выбранной кривой
     void set_G();
 
 public:
     Curve();
 
     //шаг2-3
+    //! \brief выбор кривой пользователем
     void choose_curve(int &k) {
         set_coeff(k);
         singularity(a, b);
     }
 
+    //! \brief функция-геттер
     mpz_class get_order() { return order; }
 
+    //! \brief функция-геттер
     Point get_G() {
         return this->G;
     }
 
+    //! \brief находит по кофактору точку циклической подгруппы и ее порядок
     mpz_class find_biggest_prime_divisor();//делитель порядка группы //
 };
 

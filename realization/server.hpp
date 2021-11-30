@@ -9,6 +9,7 @@
 #include "logging.hpp"
 #include "attacker.hpp"
 
+//! \brief Выбор режима - атака / доказующий
 int choose_mode() {
     int n;
     std::cout << "choose mode:\n";
@@ -18,6 +19,7 @@ int choose_mode() {
     return n;
 }
 
+//! \brief выполняет суммирование точек кривой ,сопряженные с challenge
 Point sum(mpz_class bit_string, std::vector<Point> &Y) {
     //Yi с ai из bit string
     Point result(0, 0);
@@ -32,6 +34,7 @@ Point sum(mpz_class bit_string, std::vector<Point> &Y) {
 }
 
 //шаг 10
+//! \brief генерация challenge-а - бинарной строки длины m(кол-во закрытых ключей)
 mpz_class generate_binary_string(size_t Y_size) {
     std::random_device dev;
     std::mt19937 rng(dev());
@@ -47,6 +50,7 @@ mpz_class generate_binary_string(size_t Y_size) {
 }
 
 //шаг 13
+//! \brief выболняет сравнение результатов доказывающего
 bool check_equality(Point &R, mpz_class &s,
                     std::vector<Point> &Y, mpz_class &binary) {
     Point sG = curve.get_G() * s;
@@ -54,7 +58,7 @@ bool check_equality(Point &R, mpz_class &s,
     return R == d;
 }
 
-
+//! \brief Функция вызывающая функции, выполняющие раунды протокола
 void server() {
 
     int n = choose_mode();
