@@ -55,10 +55,14 @@ bool check_equality(Point &R, mpz_class &s,
                     std::vector<Point> &Y, mpz_class &binary) {
     Point sG = curve.get_G() * s;
     Point d = sum(binary, Y) + sG;
-    return R == d;
+    bool flag = true;
+    for (size_t i = 0; i < d.x.get_str(2).length(); ++i) { flag |= d.x.get_str(2)[i] ^ R.x.get_str(2)[i]; }
+
+    for (size_t j = 0; j < d.y.get_str(2).length(); ++j) { flag |= d.y.get_str(2)[j] ^ R.y.get_str(2)[j]; }
+    return flag;
 }
 
-//! \brief Функция вызывающая функции, выполняющие раунды протокола
+//! \brief Функция вызывающая функции, выполняющие раунды протокола - методы класса Client / Attacker
 void server() {
 
     int n = choose_mode();
@@ -92,9 +96,9 @@ void server() {
     //шаг13
     if (check_equality(R, s, Y, binary)) {
         std::cout << "\nTHE PROOF IS ACCEPTED";
-        log(true, "");
+        log(true, "", n);
     } else {
-        log(false, "");
+        log(false, "", n);
         std::cout << "DENIED";
     }
     delete A;

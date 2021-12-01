@@ -123,51 +123,55 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    std::vector&lt;Point&gt; &amp;Y, mpz_class &amp;binary) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_point.html">Point</a> sG = curve.<a class="code" href="class_curve.html#abc121da92fc385234f907c4f773712c9">get_G</a>() * s;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_point.html">Point</a> d = sum(binary, Y) + sG;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> R == d;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> flag = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; d.x.get_str(2).length(); ++i) { flag |= d.x.get_str(2)[i] ^ R.x.get_str(2)[i]; }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> server() {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> n = choose_mode();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="class_client.html">Client</a> *A = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (n == 1) { A = <span class="keyword">new</span> <a class="code" href="class_client.html">Client</a>; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 2) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        A = <span class="keyword">new</span> <a class="code" href="class_attacker.html">Attacker</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Wrong input&quot;</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::vector&lt;Point&gt; Y;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">//шаг 8</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Y = A-&gt;<a class="code" href="class_client.html#a5327f34bac39157c0e61913e9d95e2dc">client_gives_initial_points</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; d.y.get_str(2).length(); ++j) { flag |= d.y.get_str(2)[j] ^ R.y.get_str(2)[j]; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> flag;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> server() {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> n = choose_mode();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_client.html">Client</a> *A = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (n == 1) { A = <span class="keyword">new</span> <a class="code" href="class_client.html">Client</a>; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 2) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        A = <span class="keyword">new</span> <a class="code" href="class_attacker.html">Attacker</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Wrong input&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">//шаг 9</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="class_point.html">Point</a> R = A-&gt;<a class="code" href="class_client.html#a6c5f827a0ca49ecc2ba4cea9ce0f8ff1">clients_point</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">//шаг 10</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">//. Проверяющий B генерирует случайную битовую строку</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// ( a1 , ..., am)∈{0, 1}m и передает ее абоненту A.</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    mpz_class bit_string = generate_binary_string(Y.size());</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">//шаг10</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    mpz_class binary = two_notation(bit_string);<span class="comment">// в двоичную</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">//шаг12</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    mpz_class s = A-&gt;<a class="code" href="class_client.html#aaf4cc3b109a2605f3a6e8dfe77f7ccbf">clients_summation</a>(binary);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::vector&lt;Point&gt; Y;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">//шаг 8</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    Y = A-&gt;<a class="code" href="class_client.html#a5327f34bac39157c0e61913e9d95e2dc">client_gives_initial_points</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">//шаг 9</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="class_point.html">Point</a> R = A-&gt;<a class="code" href="class_client.html#a6c5f827a0ca49ecc2ba4cea9ce0f8ff1">clients_point</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">//шаг 10</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">//. Проверяющий B генерирует случайную битовую строку</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// ( a1 , ..., am)∈{0, 1}m и передает ее абоненту A.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    mpz_class bit_string = generate_binary_string(Y.size());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">//шаг10</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    mpz_class binary = two_notation(bit_string);<span class="comment">// в двоичную</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//Теперь если выполнено равенство</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">//шаг13</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (check_equality(R, s, Y, binary)) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\nTHE PROOF IS ACCEPTED&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        log(<span class="keyword">true</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        log(<span class="keyword">false</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;DENIED&quot;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">delete</span> A;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif //AUTHENTICATION_PROTOCOL_SERVER_HPP</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//шаг12</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    mpz_class s = A-&gt;<a class="code" href="class_client.html#aaf4cc3b109a2605f3a6e8dfe77f7ccbf">clients_summation</a>(binary);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">//Теперь если выполнено равенство</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">//шаг13</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (check_equality(R, s, Y, binary)) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\nTHE PROOF IS ACCEPTED&quot;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        log(<span class="keyword">true</span>, <span class="stringliteral">&quot;&quot;</span>, n);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        log(<span class="keyword">false</span>, <span class="stringliteral">&quot;&quot;</span>, n);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;DENIED&quot;</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">delete</span> A;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif //AUTHENTICATION_PROTOCOL_SERVER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_curve_html_abc121da92fc385234f907c4f773712c9"><div class="ttname"><a href="class_curve.html#abc121da92fc385234f907c4f773712c9">Curve::get_G</a></div><div class="ttdeci">Point get_G()</div><div class="ttdoc">функция-геттер</div><div class="ttdef"><b>Definition:</b> curve.hpp:69</div></div>
 <div class="ttc" id="aclass_point_html"><div class="ttname"><a href="class_point.html">Point</a></div><div class="ttdoc">класс Point выполняет действия над точками кривой</div><div class="ttdef"><b>Definition:</b> point.hpp:34</div></div>

@@ -18,24 +18,32 @@ std::string add_date() {
     return j;
 }
 
-/*! записывает в лог файл время и результат программы
+/*! записывает в лог файл время и результат программы, выбранный режим
  *
  * @param flag результат программы
  * @param error сообщение об ошибки
  */
-void log(const bool flag, const std::string &error) {
-    freopen("Logging.txt", "a", stderr);
-    std::clog << add_date();
+void log(const bool flag, const std::string &error, const int &mode) {
+    freopen("../Logging.jsonl", "a", stderr);
+    json j;
+    j["date"] = add_date();
+    if (mode == 1) { j["mode"] = "Prover"; }
+    else if (mode == 2) { j["mode"] = "Attacker"; }
+    else { j["mode"] = "not important"; }
     if (flag && error.empty()) {
         if (!file_log.fail()) {
-            std::clog << " answer: ACCEPTED\n";
+            j["answer"] = "ACCEPTED";
+            std::clog << j << "\n";
         }
     } else if (error.empty()) {
         if (!file_log.fail()) {
-            std::clog << " answer: DENIED\n";
+            j["answer"] = "DENIED";
+            std::clog << j << "\n";
         }
     } else {
-        std::clog << " error:" << error << " answer: DENIED\n";
+        j["answer"] = "DENIED";
+        j["error"] = "curve is singular";
+        std::clog << j << "\n";
     }
     file_log.close();
 }

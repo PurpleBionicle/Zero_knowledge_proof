@@ -17,7 +17,7 @@
 void singularity(const mpz_class &aClass, const mpz_class &b) {
 
     if (4 * aClass * aClass * aClass + 27 * b * b == 0) {
-        log(false, "curve is singularity");
+        log(false, "curve is singularity", 3);
         exit(1);
     }
 }
