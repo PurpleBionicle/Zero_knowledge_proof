@@ -19,7 +19,7 @@ public:
 
     Point clients_point() override;
 
-    mpz_class clients_summation(mpz_class &binary_string) override;
+    S_time clients_summation(mpz_class binary_string) override;
 };
 
 #endif //AUTHENTICATION_PROTOCOL_ATTACKER_HPP

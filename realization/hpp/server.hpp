@@ -23,6 +23,8 @@ mpz_class generate_binary_string(const size_t &Y_size);
 bool check_equality(const Point &R, const mpz_class &s,
                     const std::vector<Point> &Y, mpz_class &binary);
 
+bool check_time(std::chrono::time_point<std::chrono::system_clock> time);
+
 //! \brief Функция вызывающая функции, выполняющие раунды протокола - методы класса Client / Attacker
 void server();
 

@@ -24,15 +24,12 @@ void log(const bool flag, const std::string &error, const int &mode) {
             j["answer"] = "ACCEPTED";
             std::clog << j << "\n";
         }
-    } else if (error.empty()) {
+    } else {
         if (!file_log.fail()) {
             j["answer"] = "DENIED";
+            j["error"] = error;
             std::clog << j << "\n";
         }
-    } else {
-        j["answer"] = "DENIED";
-        j["error"] = "curve is singular";
-        std::clog << j << "\n";
     }
     file_log.close();
 }

@@ -11,7 +11,7 @@
 #include <random>
 #include <fstream>
 #include <cmath>
-
+#include <chrono>
 #include <gmpxx.h>
 #include "nlohmann/json.hpp"
 

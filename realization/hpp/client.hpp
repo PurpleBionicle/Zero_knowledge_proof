@@ -5,6 +5,10 @@
 #include "header.hpp"
 #include "point.hpp"
 #include "curve.hpp"
+struct S_time{
+    mpz_class s;
+    std::chrono::time_point<std::chrono::system_clock> time;
+};
 
 //! \brief класс Client демонстрирует действия доказывающего
 class Client {
@@ -24,7 +28,7 @@ public:
      * \param[in] binary_string challenge от сервера
     */
     virtual
-    mpz_class clients_summation(mpz_class &binary_string);
+    S_time clients_summation(mpz_class binary_string);
 
 private:
     int m;

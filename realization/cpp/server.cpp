@@ -9,6 +9,12 @@ int choose_mode() {
     return n;
 }
 
+bool check_time(std::chrono::time_point<std::chrono::system_clock> time) {
+    const auto now = std::chrono::system_clock::now();
+    std::chrono::duration<float> difference = now-time;
+    return difference.count()<10;
+}
+
 Point sum(mpz_class bit_string, const std::vector<Point> &Y) {
     Point result(0, 0);
     int i = 0;
@@ -68,14 +74,20 @@ void server() {
 
     mpz_class bit_string = generate_binary_string(Y.size());
     mpz_class binary = two_notation(bit_string);
-    mpz_class s = A->clients_summation(binary);
+    S_time current_session;
+    current_session = A->clients_summation(binary);
+    crossover_time_string(binary, current_session.time);
 
-
-    if (check_equality(R, s, Y, binary)) {
-        std::cout << "\nTHE PROOF IS ACCEPTED";
-        log(true, "", n);
-    } else {
-        log(false, "", n);
+    if (check_time(current_session.time)) {
+        if (check_equality(R, current_session.s, Y, binary)) {
+            std::cout << "\nTHE PROOF IS ACCEPTED";
+            log(true, "", n);
+        } else {
+            log(false, "wrong answer for challenge ", n);
+            std::cout << "DENIED";
+        }
+    } else{
+        log(false, "wrong time", n);
         std::cout << "DENIED";
     }
     delete A;

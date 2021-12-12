@@ -28,8 +28,12 @@ Point Attacker::clients_point() {
     return current;
 }
 
-mpz_class Attacker::clients_summation(mpz_class &binary_string) {
+S_time Attacker::clients_summation(mpz_class binary_string) {
     mpz_class s;
-    file >> s;
-    return s;
+    S_time current;
+    file >> current.s;
+    int time_=0;
+    file>>time_;
+    current.time +=std::chrono::milliseconds(time_);
+    return current;
 }
