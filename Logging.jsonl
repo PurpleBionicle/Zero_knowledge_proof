@@ -8,3 +8,35 @@
 {"answer":"DENIED","date":"1.12.2021 23:37","mode":"Attacker"}
 {"answer":"DENIED","date":"1.12.2021 23:58","error":"curve is singular","mode":"not important"}
 {"answer":"ACCEPTED","date":"1.12.2021 23:58","mode":"Prover"}
+{"answer":"DENIED","date":"8.12.2021 9:49","error":"curve is singular","mode":"not important"}
+{"answer":"ACCEPTED","date":"8.12.2021 9:49","mode":"Prover"}
+{"answer":"ACCEPTED","date":"8.12.2021 10:09","mode":"Prover"}
+{"answer":"DENIED","date":"8.12.2021 10:12","error":"curve is singular","mode":"not important"}
+{"answer":"ACCEPTED","date":"8.12.2021 10:14","mode":"Prover"}
+{"answer":"ACCEPTED","date":"8.12.2021 10:23","mode":"Prover"}
+{"answer":"DENIED","date":"8.12.2021 10:23","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"8.12.2021 10:24","mode":"Prover"}
+{"answer":"ACCEPTED","date":"10.12.2021 0:24","mode":"Prover"}
+{"answer":"ACCEPTED","date":"10.12.2021 0:30","mode":"Attacker"}
+{"answer":"DENIED","date":"10.12.2021 0:35","error":"curve is singular","mode":"not important"}
+{"answer":"ACCEPTED","date":"10.12.2021 0:35","mode":"Prover"}
+{"answer":"DENIED","date":"10.12.2021 0:35","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"10.12.2021 10:35","mode":"Prover"}
+{"answer":"ACCEPTED","date":"10.12.2021 10:37","mode":"Prover"}
+{"answer":"DENIED","date":"10.12.2021 10:37","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"10.12.2021 10:37","mode":"Prover"}
+{"answer":"DENIED","date":"10.12.2021 10:38","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"10.12.2021 10:39","mode":"Prover"}
+{"answer":"ACCEPTED","date":"10.12.2021 11:22","mode":"Prover"}
+{"answer":"DENIED","date":"10.12.2021 11:22","mode":"Attacker"}
+{"answer":"DENIED","date":"10.12.2021 11:24","mode":"Attacker"}
+{"answer":"DENIED","date":"10.12.2021 11:24","mode":"Attacker"}
+{"answer":"DENIED","date":"10.12.2021 11:25","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"12.12.2021 12:56","mode":"Prover"}
+{"answer":"DENIED","date":"12.12.2021 12:56","mode":"Attacker"}
+{"answer":"DENIED","date":"12.12.2021 13:08","error":"curve is singular","mode":"not important"}
+{"answer":"ACCEPTED","date":"12.12.2021 13:09","mode":"Prover"}
+{"answer":"DENIED","date":"12.12.2021 13:27","error":"curve is singular","mode":"not important"}
+{"answer":"DENIED","date":"12.12.2021 13:33","error":"curve is singular","mode":"not important"}
+{"answer":"ACCEPTED","date":"12.12.2021 13:33","mode":"Prover"}
+{"answer":"DENIED","date":"12.12.2021 13:34","mode":"Attacker"}

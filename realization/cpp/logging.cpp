@@ -1,11 +1,5 @@
+#include "../hpp/logging.hpp"
 
-
-#ifndef AUTHENTICATION_PROTOCOL_LOGGING_HPP
-#define AUTHENTICATION_PROTOCOL_LOGGING_HPP
-
-#include "header.hpp"
-
-//! \brief возвращает дату завершения программы
 std::string add_date() {
     std::string j;
     time_t now = time(nullptr);
@@ -18,11 +12,6 @@ std::string add_date() {
     return j;
 }
 
-/*! записывает в лог файл время и результат программы, выбранный режим
- *
- * @param flag результат программы
- * @param error сообщение об ошибки
- */
 void log(const bool flag, const std::string &error, const int &mode) {
     freopen("../Logging.jsonl", "a", stderr);
     json j;
@@ -47,5 +36,3 @@ void log(const bool flag, const std::string &error, const int &mode) {
     }
     file_log.close();
 }
-
-#endif //AUTHENTICATION_PROTOCOL_LOGGING_HPP

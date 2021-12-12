@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include "header.hpp"
-#include "point.hpp"
-#include "curve.hpp"
-#include "client.hpp"
-#include "server.hpp"
+#include "hpp/header.hpp"
+#include "hpp/point.hpp"
+#include "hpp/curve.hpp"
+#include "hpp/client.hpp"
+#include "hpp/server.hpp"
 
 TEST(points, constructors) {
     Point a(2, 3);

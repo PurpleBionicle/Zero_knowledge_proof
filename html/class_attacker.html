@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>protocol: Attacker Class Reference</title>
+<title>My Project: Attacker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">protocol
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -74,28 +73,36 @@ $(function() {
  <a href="class_attacker.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="attacker_8hpp_source.html">attacker.hpp</a>&gt;</code></p>
-
-<p>Inherits <a class="el" href="class_client.html">Client</a>.</p>
+<div class="dynheader">
+Inheritance diagram for Attacker:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_attacker__inherit__graph.png" border="0" usemap="#_attacker_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Attacker:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_attacker__coll__graph.png" border="0" usemap="#_attacker_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a21cbf3ddc1493c6f65475077b84272cc"><td class="memItemLeft" align="right" valign="top"><a id="a21cbf3ddc1493c6f65475077b84272cc"></a>
-std::vector&lt; <a class="el" href="class_point.html">Point</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_attacker.html#a21cbf3ddc1493c6f65475077b84272cc">client_gives_initial_points</a> () override</td></tr>
-<tr class="memdesc:a21cbf3ddc1493c6f65475077b84272cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">отправляет точки эллиптической кривой - полученные умножением G на закрытые ключи <br /></td></tr>
-<tr class="separator:a21cbf3ddc1493c6f65475077b84272cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96f5068da2d07df032dfdfc439e17a43"><td class="memItemLeft" align="right" valign="top"><a id="a96f5068da2d07df032dfdfc439e17a43"></a>
+std::vector&lt; <a class="el" href="class_point.html">Point</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_attacker.html#a96f5068da2d07df032dfdfc439e17a43">client_gives_initial_points</a> () override</td></tr>
+<tr class="memdesc:a96f5068da2d07df032dfdfc439e17a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">отправляет точки эллиптической кривой - полученные умножением G на закрытые ключи <br /></td></tr>
+<tr class="separator:a96f5068da2d07df032dfdfc439e17a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1046a8429aba28fd636f4e28331e5f7"><td class="memItemLeft" align="right" valign="top"><a id="ab1046a8429aba28fd636f4e28331e5f7"></a>
 <a class="el" href="class_point.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_attacker.html#ab1046a8429aba28fd636f4e28331e5f7">clients_point</a> () override</td></tr>
 <tr class="memdesc:ab1046a8429aba28fd636f4e28331e5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">отправляет открытый ключ - полученный умножением случайного числа на G. <br /></td></tr>
 <tr class="separator:ab1046a8429aba28fd636f4e28331e5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b7945f716a553db951cbb06536f8965"><td class="memItemLeft" align="right" valign="top">mpz_class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_attacker.html#a0b7945f716a553db951cbb06536f8965">clients_summation</a> (mpz_class binary_string) override</td></tr>
-<tr class="memdesc:a0b7945f716a553db951cbb06536f8965"><td class="mdescLeft">&#160;</td><td class="mdescRight">отправляет результат на challenge от сервера  <a href="class_attacker.html#a0b7945f716a553db951cbb06536f8965">More...</a><br /></td></tr>
-<tr class="separator:a0b7945f716a553db951cbb06536f8965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac20411019d1235f251a1d87a91ebf116"><td class="memItemLeft" align="right" valign="top">mpz_class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_attacker.html#ac20411019d1235f251a1d87a91ebf116">clients_summation</a> (mpz_class &amp;binary_string) override</td></tr>
+<tr class="memdesc:ac20411019d1235f251a1d87a91ebf116"><td class="mdescLeft">&#160;</td><td class="mdescRight">отправляет результат на challenge от сервера  <a href="class_attacker.html#ac20411019d1235f251a1d87a91ebf116">More...</a><br /></td></tr>
+<tr class="separator:ac20411019d1235f251a1d87a91ebf116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Класс <a class="el" href="class_attacker.html" title="Класс Attacker показывает демонстрацию атаки возпроизведения Каждый метод класса забирает из последне...">Attacker</a> показывает демонстрацию атаки возпроизведения Каждый метод класса забирает из последнего сеанса соответсвующие данные и отправляет их серверу. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0b7945f716a553db951cbb06536f8965"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b7945f716a553db951cbb06536f8965">&#9670;&nbsp;</a></span>clients_summation()</h2>
+<a id="ac20411019d1235f251a1d87a91ebf116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20411019d1235f251a1d87a91ebf116">&#9670;&nbsp;</a></span>clients_summation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,7 +113,7 @@ std::vector&lt; <a class="el" href="class_point.html">Point</a> &gt;&#160;</td><
         <tr>
           <td class="memname">mpz_class Attacker::clients_summation </td>
           <td>(</td>
-          <td class="paramtype">mpz_class&#160;</td>
+          <td class="paramtype">mpz_class &amp;&#160;</td>
           <td class="paramname"><em>binary_string</em></td><td>)</td>
           <td></td>
         </tr>
@@ -126,12 +133,12 @@ std::vector&lt; <a class="el" href="class_point.html">Point</a> &gt;&#160;</td><
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_client.html#aaf4cc3b109a2605f3a6e8dfe77f7ccbf">Client</a>.</p>
+<p>Reimplemented from <a class="el" href="class_client.html#ab68e26dc90c1f58f68a7c6c2d28c255f">Client</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>realization/<a class="el" href="attacker_8hpp_source.html">attacker.hpp</a></li>
+<li>realization/hpp/<a class="el" href="attacker_8hpp_source.html">attacker.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

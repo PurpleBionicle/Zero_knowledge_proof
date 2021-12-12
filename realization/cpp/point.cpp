@@ -1,23 +1,5 @@
-//
-// Created by ndp20 on 21.08.2021.
-//
 
-#ifndef AUTHENTICATION_PROTOCOL_POINT_HPP
-#define AUTHENTICATION_PROTOCOL_POINT_HPP
-
-
-#include <utility>
-
-#include "header.hpp"
-
-/*! \brief переводит число в двоичную систему счисления
- *
- * @param num исходное число
- * @return число в 2сс
- */
 mpz_class two_notation(mpz_class num) {
-    //перевод из 10сс в 2сс
-    // необходимо для минимизации числа итераций суммирования
     mpz_class result = 0, k = 1;
 
     while (num) {
@@ -29,41 +11,13 @@ mpz_class two_notation(mpz_class num) {
     return result;
 }
 
-
-//! \brief класс Point выполняет действия над точками кривой
-class Point {
-public:
-    Point() { x = 0, y = 0; };
-
-    Point(mpz_class xx, mpz_class yy) { x = std::move(xx), y = std::move(yy); };
-    mpz_class x, y;
-
-
-    //! \brief сравнивает точки
-    bool operator==(const Point &B) const {
-        return B.x == this->x && B.y == this->y;
-    }
-
-    //! \brief приравнивает точку
-    Point operator=(const Point &B);
-
-    //! \brief суммирование
-    Point operator+(Point &B) const;
-
-    //! \brief суммирование
-    Point operator+=(Point &B);
-
-    //! \brief умножение точки на число
-    Point operator*(const mpz_class &k) const;
-};
-
 Point Point::operator=(const Point &B) {
     this->y = B.y;
     this->x = B.x;
     return *this;
 }
 
-Point Point::operator+(Point &B) const {
+Point Point::operator+(const Point &B) const {
     Point A;
     mpz_class alfa;
     mpz_class inverse = 0;
@@ -140,7 +94,6 @@ Point Point::operator+=(Point &B) {
     mpz_class yy = this->y;
     this->x = (alfa * alfa - this->x - B.x) % p;
     this->y = (alfa * (this->x - xx) + yy) % p;
-    //this->y = (alfa * (this->x - xx) + this->y) % p;
     while (this->x < 0) this->x += p;
     this->y *= -1;
     while (this->y < 0) this->y += p;
@@ -149,7 +102,7 @@ Point Point::operator+=(Point &B) {
 
 Point Point::operator*(const mpz_class &k) const {
     if (k == 0) { return {0, 0}; }
-    mpz_class k2 = two_notation(k);// в 2 сс
+    mpz_class k2 = two_notation(k);
 
     Point Y;
     std::vector<Point> templ;
@@ -158,18 +111,15 @@ Point Point::operator*(const mpz_class &k) const {
     int i = 1;
     mpz_class k_2 = k2;
     k_2 /= 10;
-    while (k_2) //в 2 сс
-    {
+    while (k_2) {
         Y = templ[i - 1] + templ[i - 1];
         templ.push_back(Y);
-        // вектор сложенных частей (G,2G,4G, и тд степени двойки)-
-        // max степень - размер xi
         k_2 /= 10;
         ++i;
     }
-    //теперь из этих степеней двойки собираем наше число
+
     Point result;
-    bool init = false; //первая точка не плюсуется с (0,0) а просто приравнивается
+    bool init = false;
     for (auto &j: templ) {
         if (k2 % 10 != 0) {
             if (!init) {
@@ -183,5 +133,3 @@ Point Point::operator*(const mpz_class &k) const {
     }
     return result;
 }
-
-#endif //AUTHENTICATION_PROTOCOL_POINT_HPP

@@ -6,8 +6,8 @@
 #include "header.hpp"
 #include "point.hpp"
 #include "logging.hpp"
+#include "../cpp/logging.cpp"
 
-//шаг 4
 /*! \brief проверяет выбранную кривую на сингулярность
  *
  * \param[in] aClass коэффициент кривой
@@ -15,7 +15,6 @@
  * в случае сингулярности выводит соответсвующий результат в лог файл и заканчивает программу
  */
 void singularity(const mpz_class &aClass, const mpz_class &b) {
-
     if (4 * aClass * aClass * aClass + 27 * b * b == 0) {
         log(false, "curve is singularity", 3);
         exit(1);
@@ -31,13 +30,11 @@ void singularity(const mpz_class &aClass, const mpz_class &b) {
  * kofactor - кофактор . Отношение порядков группы и уиклической подгруппы
  */
 class Curve {
-    //elliptical curve y^2=x^3+ax+b
-    //Secp256k1
 private:
-    mpz_class p; // Zp
-    Point G;//базовая точка
+    mpz_class p;
+    Point G;
     mpz_class order;
-    mpz_class a, b; // коэффициенты кривой
+    mpz_class a, b;
     int kofactor = 1;
 
     //! \brief определяет параметр выбранной кривой
@@ -55,12 +52,8 @@ private:
 public:
     Curve();
 
-    //шаг2-3
     //! \brief выбор кривой пользователем
-    void choose_curve(int &k) {
-        set_coeff(k);
-        singularity(a, b);
-    }
+    void choose_curve(int &k);
 
     //! \brief функция-геттер
     mpz_class get_order() { return order; }
@@ -71,7 +64,7 @@ public:
     }
 
     //! \brief находит по кофактору точку циклической подгруппы и ее порядок
-    mpz_class find_biggest_prime_divisor();//делитель порядка группы //
+    mpz_class find_biggest_prime_divisor();
 };
 
 Curve::Curve() {
@@ -80,6 +73,11 @@ Curve::Curve() {
     set_G();
     int i = 2;
     set_coeff(i);
+}
+
+void Curve::choose_curve(int &k) {
+    set_coeff(k);
+    singularity(a, b);
 }
 
 void Curve::set_order() {
@@ -111,19 +109,11 @@ void Curve::set_G() {
     G.y = y1;
 }
 
-mpz_class Curve::find_biggest_prime_divisor()//делитель порядка группы //
-{
+mpz_class Curve::find_biggest_prime_divisor() {
     if (kofactor == 1) { return order; }
-    /* int div = 2;
-     while (order > 1) {
-         while (order % div == 0) {
-             order /= div;
-         }
-         if (div == 2) div++;
-         else div += 2;
-     }
-     return div - 2;*/
+    return order;
 }
+
 
 Curve curve;
 

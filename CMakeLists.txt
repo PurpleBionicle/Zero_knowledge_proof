@@ -29,13 +29,14 @@ find_library(GMP_LIBRARY NAMES gmp PATHS "/usr/local/lib")
 
 
 add_library(${PROJECT_NAME} STATIC
-        realization/header.hpp
-        realization/point.hpp
-        realization/curve.hpp
-        realization/server.hpp
+        realization/hpp/header.hpp
+        realization/hpp/point.hpp
+        realization/hpp/curve.hpp
+        realization/hpp/server.hpp
         realization/main.cpp
-        realization/client.hpp
-        realization/attacker.hpp)
+        realization/hpp/client.hpp
+        realization/hpp/attacker.hpp
+        )
 
 add_executable(demo realization/main.cpp)
 

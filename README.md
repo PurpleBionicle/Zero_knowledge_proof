@@ -9,7 +9,7 @@
 * демонстрация - demonstration/..   </br>
 * логгирование (в формате jsonl) - Logging.jsonl   </br>
   <h3> рекомендуемое число секретов > 72 </h3>
-  <h4>Внесенная модификация: </h4>
+  <h2>Внесенная модификация: </h2>
 * Сравнение через xor - не дает никакой информации о времени сравнения ,что может позволить понять с какого
   символа/цифры ответ злоумышленника неправильный
 
@@ -31,7 +31,7 @@
 ---
 
 - [x] UML-диаграмма  <br/>
-  ![prover](demonstration/pic/uml.png)
+  ![prover](demonstration/pic/uml2.png)
   <br/>
 
 ---
@@ -76,11 +76,17 @@ s = k + (sum(binary_string)) % q;
 - [x] R=[s]G+ ∑[ai]Yi
 
 ```c++
-    Point sG = curve.get_G() * s;
-Point d = sum(binary, Y) + sG;
-bool flag = true;
-for (size_t i = 0; i < d.x.get_str(2).length(); ++i) { flag |= d.x.get_str(2)[i] ^ R.x.get_str(2)[i]; }
+Point sG = curve.get_G() * s;
+    Point d = sum(binary, Y) + sG;
+    bool flag = false;
+    for (size_t i = 0; i < d.x.get_str(2).length(); ++i) 
+    { 
+        flag |= d.x.get_str(2)[i] ^ R.x.get_str(2)[i]; 
+    }
 
-for (size_t j = 0; j < d.y.get_str(2).length(); ++j) { flag |= d.y.get_str(2)[j] ^ R.y.get_str(2)[j]; }
-return flag;
+    for (size_t j = 0; j < d.y.get_str(2).length(); ++j) 
+    {
+        flag |= d.y.get_str(2)[j] ^ R.y.get_str(2)[j]; 
+    }
+    return !flag;
 ```

@@ -1,9 +1,8 @@
 
-#include "server.hpp"
+#include "hpp/server.hpp"
+#include "cpp/server.cpp"
 
 int main() {
-    //clients     //server
-    //шаг 1
     server();
 
     return 0;
