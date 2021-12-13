@@ -87,8 +87,7 @@ body {
     }
 }
 
-.binary {
-    animation-name: binary;
+.binary , .binary_attacker {
     animation-duration: 3s;
     animation-delay: 0s;
     animation-timing-function: linear;
@@ -96,12 +95,35 @@ body {
     text-align: center;
     left: calc(100% - 320px);
     top: -1300px;
-
     width: 200px;
     height: 160px;
     background: rgba(0, 255, 53, 0.74);
     border-radius: 50%/10%;
     position: relative;
+}
+
+.binary{
+    animation-name: binary;
+}
+
+.binary_attacker{
+    animation-name: binary_attack ;
+    top: -1800px;
+}
+
+@keyframes binary_attack {
+    0% {
+        left: calc(100% - 320px);
+        top: calc(-1200px - 900px);
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 50%;
+        opacity: 0;
+    }
 }
 
 @keyframes binary {

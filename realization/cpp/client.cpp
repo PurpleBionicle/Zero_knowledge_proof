@@ -14,7 +14,7 @@ void crossover_time_string(mpz_class &binary_string,
         int time_ = static_cast<int>(bin_timestamp.get_str()[i] - '0');
         int string_ = static_cast<int>(bin_buffer.get_str()[i] - '0');
         if (time_ < 0) { time_ = 0; }
-        int current_mod = time_ | string_;
+        int current_mod = time_ ^ string_;
         binary_string += current_mod * pow(10, i);
     }
 

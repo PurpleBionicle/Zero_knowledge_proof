@@ -76,3 +76,6 @@
 {"answer":"DENIED","date":"12.12.2021 17:46","error":"wrong answer for challenge ","mode":"Attacker"}
 {"answer":"DENIED","date":"12.12.2021 17:47","error":"wrong answer for challenge ","mode":"Attacker"}
 {"answer":"DENIED","date":"12.12.2021 17:52","error":"wrong time","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"13.12.2021 13:28","mode":"Prover"}
+{"answer":"DENIED","date":"13.12.2021 13:28","error":"wrong time","mode":"Attacker"}
+{"answer":"DENIED","date":"13.12.2021 13:28","error":"wrong time","mode":"Attacker"}
