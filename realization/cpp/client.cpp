@@ -24,7 +24,7 @@ Client::Client() {
     int i = 0;
     std::cout << "choose curve:\n";
     std::cout << "1.singular curve\n";
-    std::cout << "2.seck256k1\n";
+    std::cout << "2.secp256k1\n";
     std::cin >> i;
     curve.choose_curve(i);
 

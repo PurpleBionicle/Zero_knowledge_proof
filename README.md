@@ -15,12 +15,12 @@
 * Добавлена временная метка
 
 - [x] Протокол <br/>
-  ![output](demonstration/pic/prover.png)
+  ![output](demonstration/pic/prover1.png)
 
 ---
 
 - [x] Атака повторного воспроизведения  <br/>
-  ![attacker](demonstration/pic/attacker1.png)
+  ![attacker](demonstration/pic/attacker2.png)
 
 ---
 
