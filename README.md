@@ -5,9 +5,10 @@
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Lines of code](https://img.shields.io/tokei/lines/github/88888812/authentication-protocol?color=brightgreen)
+
 <img alt="Telegram" src="https://img.shields.io/badge/nikitosk_a-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
 
-[//]: # (<img alt="lines"src="https://img.shields.io/tokei/lines/github/88888812/authentication-protocol"/>)
 Навигация по репозиторию:
 
 * документация - documentation/..  </br>
