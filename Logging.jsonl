@@ -82,3 +82,4 @@
 {"answer":"DENIED","date":"13.12.2021 19:42","error":"curve is singularity","mode":"not important"}
 {"answer":"ACCEPTED","date":"13.12.2021 19:42","mode":"Prover"}
 {"answer":"DENIED","date":"13.12.2021 19:44","error":"wrong time","mode":"Attacker"}
+{"answer":"ACCEPTED","date":"15.12.2021 23:33","mode":"Prover"}
