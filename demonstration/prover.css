@@ -1,0 +1,281 @@
+body {
+    background-color: rgb(255, 255, 255);
+    background-image: url("https://oracle-patches.com/images/2019/10/08/row_code_pl_sql_large.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+
+.anonimus {
+    margin-top: auto;
+    margin-left:40%;
+    margin-right: auto;
+}
+
+.Y, .R, .S2, .check {
+    animation-duration: 15s;
+    color: #34c400;
+}
+
+.Y {
+    animation-name: Y;
+}
+
+.R {
+    animation-name: R;
+    margin: auto;
+}
+
+.S2 {
+    animation-name: S2;
+}
+
+.check {
+    animation-name: check;
+    text-align: right;
+}
+
+@keyframes Y {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 1;
+    }
+    21% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes R {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    21% {
+        opacity: 1;
+    }
+    39% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes S2 {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    61% {
+        opacity: 1;
+    }
+    79% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes check {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    81% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.content_circle1, .content_circle2, .S {
+    width: 200px;
+    height: 200px;
+    color: rgba(0, 0, 0, 0.74);
+    position: relative;
+    left: 300px;
+
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    background: #BDE2E0;
+    border-radius: 50%;
+    border: 30px solid #8f02af;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, .5);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 100px;
+    overflow: hidden;
+}
+
+.content_circle1 {
+    top: -800px;
+
+    animation-name: circle;
+    animation-duration: 3s;
+
+
+}
+
+.content_circle2 {
+    top: -1050px;
+
+    animation-name: circle2;
+    animation-duration: 6s;
+}
+
+@keyframes circle {
+    0% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+@keyframes circle2 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        left: 300px;
+        opacity: 0;
+    }
+    60% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+.binary {
+    animation-name: binary;
+    animation-duration: 9s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    text-align: center;
+    left: calc(100% - 320px);
+    top: -1300px;
+
+    width: 200px;
+    height: 160px;
+    background: rgba(0, 255, 53, 0.74);
+    border-radius: 50%/10%;
+    position: relative;
+}
+
+@keyframes binary {
+    0% {
+        opacity: 0;
+        left: 100%;
+    }
+    66% {
+        left: 100%;
+        opacity: 0;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 5%;
+        opacity: 0;
+    }
+}
+
+.S {
+    top: -1500px;
+    border-radius: 25%;
+    width: 150px;
+    height: 150px;
+    animation-name: S;
+    animation-duration: 12s;
+}
+
+@keyframes S {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        left: 300px;
+        opacity: 0;
+    }
+    75% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+.done {
+    animation-name: done;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: calc(100% - 320px);
+    top: -1700px;
+    position: relative;
+}
+
+@keyframes done {
+    0% {
+        opacity: 0;
+        left: 100%;
+    }
+    79% {
+        left: 100%;
+        opacity: 0;
+    }
+    80% {
+        left: 100%;
+        opacity: 1;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        left: 5%;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,311 @@
+body {
+    background-color: rgb(255, 255, 255);
+    background-image: url("https://oracle-patches.com/images/2019/10/08/row_code_pl_sql_large.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+
+.anonimus {
+    margin-top: auto;
+    margin-left: 40%;
+    margin-right: auto;
+}
+
+
+.content_circle1, .content_circle2, .S, .content_circle3,
+.content_circle4, .S1 {
+    width: 200px;
+    height: 200px;
+    color: rgba(0, 0, 0, 0.74);
+    position: relative;
+    left: 300px;
+
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    background: #BDE2E0;
+    border-radius: 50%;
+    border: 30px solid #8f02af;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, .5);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 100px;
+    overflow: hidden;
+}
+
+.content_circle1 {
+    top: -800px;
+
+    animation-name: circle;
+    animation-duration: 1s;
+
+
+}
+
+.content_circle2 {
+    top: -1050px;
+
+    animation-name: circle2;
+    animation-duration: 2s;
+}
+
+@keyframes circle {
+    0% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+@keyframes circle2 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        left: 300px;
+        opacity: 0;
+    }
+    60% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+.binary , .binary_attacker {
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    text-align: center;
+    left: calc(100% - 320px);
+    top: -1300px;
+    width: 200px;
+    height: 160px;
+    background: rgba(0, 255, 53, 0.74);
+    border-radius: 50%/10%;
+    position: relative;
+}
+
+.binary{
+    animation-name: binary;
+}
+
+.binary_attacker{
+    animation-name: binary_attack ;
+    top: -1800px;
+}
+
+@keyframes binary_attack {
+    0% {
+        left: calc(100% - 320px);
+        top: calc(-1200px - 900px);
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 50%;
+        opacity: 0;
+    }
+}
+
+@keyframes binary {
+    0% {
+        opacity: 0;
+        left: 100%;
+    }
+    66% {
+        left: 100%;
+        opacity: 0;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 5%;
+        opacity: 0;
+    }
+}
+
+.S {
+    top: -1500px;
+    border-radius: 25%;
+    width: 150px;
+    height: 150px;
+    animation-name: S;
+    animation-duration: 4s;
+}
+
+@keyframes S {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        left: 300px;
+        opacity: 0;
+    }
+    75% {
+        left: 300px;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+}
+
+.done {
+    animation-name: done;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: calc(100% - 320px);
+    top: -1700px;
+    position: relative;
+}
+
+@keyframes done {
+    0% {
+        opacity: 0;
+        left: 100%;
+    }
+    79% {
+        left: 100%;
+        opacity: 0;
+    }
+    80% {
+        left: 100%;
+        opacity: 1;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        left: 5%;
+        opacity: 0;
+    }
+}
+
+.content_circle3, .content_circle4, .S1 {
+    background: #ffdd00;
+    border: 30px solid #d20c22;
+}
+
+.content_circle3 {
+    top: +400px;
+    animation-name: circle3;
+    animation-duration: 6s;
+}
+
+@keyframes circle3 {
+    0% {
+        left: 50%;
+        bottom: auto;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: -320px;
+    }
+}
+
+.content_circle4 {
+    top: -1200px;
+
+    animation-name: circle4;
+    animation-duration: 7s;
+}
+
+@keyframes circle4 {
+    0% {
+        left: 50%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: calc(-1200px - 700px);
+    }
+}
+
+.S1 {
+    top: -1450px;
+    border-radius: 25%;
+    width: 150px;
+    height: 150px;
+    animation-name: S1;
+    animation-duration: 8s;
+}
+
+@keyframes S1 {
+    0% {
+        left: 50%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: calc(-1450px - 700px);
+
+    }
+}
+
+.NO {
+    animation-name: NO;
+    animation-duration: 11s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: calc(100% - 320px);
+    top: -2200px;
+    position: relative;
+}
+
+@keyframes NO {
+    0% {
+        left: calc(100% - 320px);
+        opacity: 0;
+    }
+    72% {
+        left: calc(100% - 320px);
+        opacity: 0;
+        top: -2200px;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 50%;
+        opacity: 0;
+        top: -1500px;
+    }
+}
