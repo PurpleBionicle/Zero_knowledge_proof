@@ -1,4 +1,4 @@
-# authentication-protocol
+# Zero-knowledge proof
 
 <h2>Курсовая работа : </h2>
 
